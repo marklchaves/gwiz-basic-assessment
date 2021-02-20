@@ -8,8 +8,12 @@ class GPNF_Session {
 	private $_cookie;
 
 	public function __construct( $form_id ) {
-
-		$this->_form_id = $form_id;
+		
+		if ( is_array($form_id) ) {
+			$this->_form_id = $form_id['id'];
+		} else {
+			$this->_form_id = $form_id;
+		}
 		$this->_cookie = $this->get_cookie();
 
 	}
